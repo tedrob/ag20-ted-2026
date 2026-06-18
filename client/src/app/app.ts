@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Nav } from "../layout/nav/nav";
+import { Nav } from '../layout/nav/nav';
 
 @Component({
   selector: 'app-root',
   imports: [Nav],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App implements OnInit{
+export class App implements OnInit {
   private http = inject(HttpClient);
   protected title = 'Ag20-ted';
-  protected members = signal<any>([])
+  protected members = signal<any>([]);
 
   async ngOnInit() {
-      this.members.set(await this.getMembers())
+    this.members.set(await this.getMembers());
   }
 
   async getMembers() {
@@ -25,7 +25,5 @@ export class App implements OnInit{
       console.log(error);
       throw error;
     }
-
   }
-
 }
